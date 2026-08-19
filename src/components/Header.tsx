@@ -1,45 +1,38 @@
 import React from 'react'
+import { Search } from 'lucide-react'
 
-function formatCLP(value: number) {
-  if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(1)}M`
-  if (value >= 1_000) return `$${(value / 1_000).toFixed(1)}k`
-  return `$${value}`
-}
-
-export default function Header({ totals, onOpenAcceptance }: { totals: { activos: number; monto: number; avgDias: number; criticas: number }, onOpenAcceptance?: () => void }) {
+export default function Header({ onOpenSummary }: { onOpenSummary?: () => void }){
   return (
-    <header>
-      <div className="bci-header justify-between">
+    <div>
+      <div className="bci-topbar" />
+      <div className="bci-header px-4 py-3">
         <div className="bci-logo">
-          <img src="/bci-logo.svg" alt="BCI logo" className="w-36 h-9" />
+          <img src="/bci-logo.svg" alt="BCI logo" className="w-28 h-auto" />
+          <div>
+            <div className="bci-logo-text">eConfirming CRM</div>
+            <div className="muted-sm">Panel de gestión • Banco BCI</div>
+          </div>
         </div>
 
-        <div>
-          <button className="text-sm bci-muted underline" onClick={() => onOpenAcceptance && onOpenAcceptance()}>Criterios de aceptación</button>
+        <div className="flex items-center gap-4">
+          <div className="kpi">
+            <div className="value">$ 4.250.000</div>
+            <div className="muted-sm">Valor en cartera</div>
+          </div>
+          <div className="kpi">
+            <div className="value">24</div>
+            <div className="muted-sm">Convenios activos</div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+              <input placeholder="Buscar convenio, cliente o id" className="pl-9 pr-3 py-1 border rounded-md w-64" />
+            </div>
+            <button className="bci-btn" onClick={onOpenSummary}>Resumen IA</button>
+          </div>
         </div>
       </div>
-
-      <div className="mt-4 grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div className="p-3 bci-card">
-          <div className="text-xs bci-muted">Convenios activos</div>
-          <div className="text-lg font-medium">{totals.activos}</div>
-        </div>
-
-        <div className="p-3 bci-card">
-          <div className="text-xs bci-muted">Monto total en proceso</div>
-          <div className="text-lg font-medium">{formatCLP(totals.monto)}</div>
-        </div>
-
-        <div className="p-3 bci-card">
-          <div className="text-xs bci-muted">Tiempo promedio en etapa</div>
-          <div className="text-lg font-medium">{totals.avgDias} días</div>
-        </div>
-
-        <div className="p-3 bci-card">
-          <div className="text-xs bci-muted">Alertas críticas</div>
-          <div className="text-lg font-medium text-rose-600">{totals.criticas}</div>
-        </div>
-      </div>
-    </header>
+    </div>
   )
 }
