@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "apply:branding": "node ./scripts/apply-branding.js",
     "setup:branding": "npm install --save-dev @storybook/react stylelint stylelint-config-standard prettier prettier-plugin-tailwindcss husky lint-staged"
+    ,"storybook:build": "build-storybook -s public -o storybook-static"
   },
   "dependencies": {
     "react": "^18.2.0",
