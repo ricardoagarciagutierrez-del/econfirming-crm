@@ -75,8 +75,8 @@ export default function Summary({ convenios }: { convenios: Convenio[] }){
           </div>
 
           <div className="flex flex-col gap-2">
-            <button className="px-3 py-1 bg-sky-600 text-white" onClick={refresh}>{loading ? 'Analizando...' : 'Actualizar análisis'}</button>
-            <button className="px-3 py-1 border" onClick={genCFO}>Generar reporte para el CFO</button>
+            <button className="px-3 py-1 bci-btn" onClick={refresh}>{loading ? 'Analizando...' : 'Actualizar análisis'}</button>
+            <button className="px-3 py-1 border bci-muted" onClick={genCFO}>Generar reporte para el CFO</button>
           </div>
         </div>
         {error && <div className="mt-2 text-xs text-rose-600">{error}</div>}
@@ -89,8 +89,8 @@ export default function Summary({ convenios }: { convenios: Convenio[] }){
             <h3 className="font-medium">Reporte para el CFO</h3>
             <pre className="mt-2 text-sm whitespace-pre-wrap">{cfoText}</pre>
             <div className="mt-3 flex justify-end gap-2">
-              <button className="px-3 py-1 border" onClick={()=>{navigator.clipboard.writeText(cfoText)}}>Copiar</button>
-              <button className="px-3 py-1 bg-sky-600 text-white" onClick={()=>setCfoOpen(false)}>Cerrar</button>
+              <button className="px-3 py-1 border bci-muted" onClick={()=>{navigator.clipboard.writeText(cfoText)}}>Copiar</button>
+              <button className="px-3 py-1 bci-btn" onClick={()=>setCfoOpen(false)}>Cerrar</button>
             </div>
           </div>
         </div>

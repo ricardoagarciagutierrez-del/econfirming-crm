@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" role="img" aria-label="BCI logo">
+  <rect width="120" height="40" fill="#C8102E" rx="6"/>
+  <g transform="translate(10,8)" fill="#fff" font-family="Helvetica, Arial, sans-serif">
+    <text x="0" y="18" font-size="18" font-weight="700">BCI</text>
+    <text x="54" y="18" font-size="12" font-weight="600">eConfirming</text>
+  </g>
+</svg>

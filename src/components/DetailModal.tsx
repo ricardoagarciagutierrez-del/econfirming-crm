@@ -93,8 +93,8 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
             </div>
           </div>
           <div className="text-right">
-            <button className="text-sm text-slate-600 mr-2" onClick={() => setShowBlockerForm(s => !s)}>Registrar obstáculo</button>
-            <button className="px-3 py-1 bg-sky-600 text-white rounded-sm" onClick={() => { onSave(local); onClose() }}>Cerrar</button>
+            <button className="text-sm bci-muted mr-2" onClick={() => setShowBlockerForm(s => !s)}>Registrar obstáculo</button>
+            <button className="px-3 py-1 bci-btn" onClick={() => { onSave(local); onClose() }}>Cerrar</button>
           </div>
         </header>
 
@@ -111,7 +111,7 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
                 </select>
                 <input placeholder="Responsable" value={blockerForm.responsableResolucion||''} onChange={e => setBlockerForm({...blockerForm, responsableResolucion: e.target.value})} className="border px-2 py-1 flex-1" />
                 <input type="date" value={blockerForm.fechaCompromiso?.slice(0,10)||''} onChange={e => setBlockerForm({...blockerForm, fechaCompromiso: e.target.value + 'T00:00:00.000Z'})} className="border px-2 py-1" />
-                <button className="px-3 bg-emerald-600 text-white" onClick={registerBlocker}>Guardar</button>
+                <button className="px-3 bci-btn" onClick={registerBlocker}>Guardar</button>
               </div>
             </div>
           )}
@@ -143,7 +143,7 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
                   <option>Acuerdo</option>
                 </select>
                 <input className="border px-2 py-1 w-80 mr-2" placeholder="Detalle" value={entryText} onChange={e => setEntryText(e.target.value)} />
-                <button className="px-3 py-1 bg-sky-600 text-white" onClick={addBitacora}>Agregar</button>
+                <button className="px-3 py-1 bci-btn" onClick={addBitacora}>Agregar</button>
               </div>
             </section>
           )}
@@ -155,7 +155,7 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
                   <div key={h.id} className="flex items-center justify-between p-2 border border-slate-100 rounded-sm">
                     <div>
                       <div className="text-sm font-medium">{h.nombre}</div>
-                      <div className="text-xs text-slate-500">Responsable: {h.responsable}</div>
+                      <div className="text-xs bci-muted">Responsable: {h.responsable}</div>
                     </div>
                     <div className="flex items-center gap-2">
                       <select value={h.estado} onChange={e => changeHitoEstado(h.id, e.target.value as any)} className="border px-2 py-1">
@@ -193,8 +193,8 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
                       <div className="text-sm">{i.nombre} {i.obligatorio && <span className="text-xs text-rose-600">(Obligatorio)</span>}</div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="text-xs text-slate-600">{i.estado}</div>
-                      {i.estado === 'Pendiente' && <button className="px-2 py-1 bg-slate-100" onClick={() => attachChecklist(i.id)}>Adjuntar</button>}
+                      <div className="text-xs bci-muted">{i.estado}</div>
+                      {i.estado === 'Pendiente' && <button className="px-2 py-1 bci-btn" onClick={() => attachChecklist(i.id)}>Adjuntar</button>}
                     </div>
                   </div>
                 ))}
@@ -217,9 +217,9 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
                             <div>
                               <div className="font-medium">{g.nombre}</div>
                               <div className="text-xs text-slate-500">{g.cargo} • {g.email}</div>
+                            <div>
+                              <button disabled={missing.length>0} className={`px-3 py-1 ${missing.length>0? 'bg-slate-200 text-slate-400':'bci-btn'}`} onClick={tryAdvance}>Avanzar a la siguiente etapa</button>
                             </div>
-                            <div className="text-xs text-slate-500">{g.telefono}</div>
-                          </div>
                         ))}
                       </div>
                     </div>

@@ -18,15 +18,15 @@ export default function Card({ convenio, onOpen }: { convenio: any; onOpen?: () 
   const dias = Math.max(0, Math.round((Date.now() - new Date(convenio.fechaIngresoEtapa).getTime()) / (1000 * 60 * 60 * 24)))
 
   return (
-    <article onClick={onOpen} tabIndex={0} className="cursor-pointer border border-slate-200 rounded-sm p-3 focus:outline-none focus:ring-2 focus:ring-sky-300">
+    <article onClick={onOpen} tabIndex={0} className="cursor-pointer bci-card p-3 focus:outline-none focus:ring-2 focus:ring-[color:var(--bci-primary)]">
       <div className="flex justify-between items-start gap-2">
         <div>
-          <div className="font-semibold text-slate-800">{convenio.nombreCliente}</div>
-          <div className="text-xs text-slate-500">{convenio.cantidadProveedores} proveedores • ${convenio.montoEstimado.toLocaleString('es-CL')}</div>
+          <div className="font-semibold">{convenio.nombreCliente}</div>
+          <div className="text-xs bci-muted">{convenio.cantidadProveedores} proveedores • ${convenio.montoEstimado.toLocaleString('es-CL')}</div>
         </div>
 
         <div className="flex flex-col items-end gap-1">
-          <span className={`w-3 h-3 rounded-full ${sla === 'ok' ? 'bg-green-500' : sla === 'riesgo' ? 'bg-amber-400' : 'bg-rose-600'}`} />
+          <span className={`w-3 h-3 rounded-full ${sla === 'ok' ? 'bg-green-600' : sla === 'riesgo' ? 'bg-amber-500' : 'bg-rose-700'}`} />
           {convenio.blockers.some((b: any) => b.estado === 'Abierto' && new Date(b.fechaCompromiso) < new Date()) && (
             <div title="Blocker abierto" className="text-rose-600">
               <AlertCircle className="w-4 h-4" />
@@ -35,11 +35,11 @@ export default function Card({ convenio, onOpen }: { convenio: any; onOpen?: () 
         </div>
       </div>
 
-      <div className="mt-3 text-xs text-slate-600">
+      <div className="mt-3 text-xs bci-muted">
         <span className="mr-2">{dias} días en etapa</span>
       </div>
 
-      <div className="mt-3 border-t border-slate-100 pt-2 text-xs text-slate-500">Actualizado hace {Math.max(0, Math.round((Date.now() - new Date(convenio.ultimaActualizacion).getTime()) / (1000 * 60 * 60 * 24)))} días por {convenio.ultimoActualizadoPor}</div>
+      <div className="mt-3 border-t border-slate-100 pt-2 text-xs bci-muted">Actualizado hace {Math.max(0, Math.round((Date.now() - new Date(convenio.ultimaActualizacion).getTime()) / (1000 * 60 * 60 * 24)))} días por {convenio.ultimoActualizadoPor}</div>
     </article>
   )
 }
