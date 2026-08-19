@@ -1,5 +1,1 @@
-.dev.vars
-node_modules/
-dist/
-/.env
-.env.local
+node_modules

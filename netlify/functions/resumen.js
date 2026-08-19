@@ -1,37 +1,24 @@
-exports.handler = async function (event) {
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers: { 'Allow': 'POST' },
-      body: JSON.stringify({ error: 'Method Not Allowed' }),
-    };
-  }
-
+exports.handler = async function (event, context) {
   try {
-    const body = event.body ? JSON.parse(event.body) : {};
+    const body = event.body ? JSON.parse(event.body) : {}
+    const conveniosCount = body?.conveniosCount || (body?.pipeline?.total || 0)
 
-    const prompt = body.prompt || 'Resume los convenios en formato breve.';
+    const titular = `${conveniosCount} convenios en el pipeline`;
+    const hallazgos = conveniosCount ? [`${conveniosCount} convenios registrados`] : [];
+    const accionRecomendada = conveniosCount ? 'Revisar convenios con mayor tiempo en etapa' : 'No hay convenios'
 
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.ANTHROPIC_API_KEY}`,
-      },
-      body: JSON.stringify({ model: 'claude-sonnet-4-6', messages:[{role:'user', content: prompt}] }),
-    });
-
-    const data = await res.json();
+    const resumen = { titular, hallazgos, accionRecomendada }
 
     return {
-      statusCode: res.status || 200,
+      statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    };
+      body: JSON.stringify({ resumen, source: 'netlify-fallback' })
+    }
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: err.message }),
-    };
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'internal_error', detail: String(err) })
+    }
   }
-};
+}

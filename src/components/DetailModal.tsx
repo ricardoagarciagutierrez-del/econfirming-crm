@@ -12,10 +12,8 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
   const [entryText, setEntryText] = useState('')
   const [entryTipo, setEntryTipo] = useState<EntradaBitacora['tipo']>('Reunión')
 
-  // recompute missing requirements for advancing
   function missingToAdvance(c: Convenio): string[] {
     const missing: string[] = []
-    // checklist
     const pendientes = c.checklist.filter(i => i.obligatorio && i.estado !== 'Aprobado')
     pendientes.forEach(i => missing.push(`Checklist pendiente: ${i.nombre}`))
 
@@ -170,7 +168,7 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
 
               <div className="border-t pt-3 flex items-start gap-4">
                 <div>
-                  <button disabled={missing.length>0} className={`px-3 py-1 ${missing.length>0? 'bg-slate-200 text-slate-400':'bg-emerald-600 text-white'}`} onClick={tryAdvance}>Avanzar a la siguiente etapa</button>
+                  <button disabled={missing.length>0} className={`px-3 py-1 ${missing.length>0? 'bg-slate-200 text-slate-400':'bci-btn'}`} onClick={tryAdvance}>Avanzar a la siguiente etapa</button>
                 </div>
                 {missing.length>0 && (
                   <div className="text-sm text-rose-600">
@@ -216,10 +214,10 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
                           <div key={g.id} className="p-2 border-b last:border-b-0 flex justify-between">
                             <div>
                               <div className="font-medium">{g.nombre}</div>
-                              <div className="text-xs text-slate-500">{g.cargo} • {g.email}</div>
-                            <div>
-                              <button disabled={missing.length>0} className={`px-3 py-1 ${missing.length>0? 'bg-slate-200 text-slate-400':'bci-btn'}`} onClick={tryAdvance}>Avanzar a la siguiente etapa</button>
+                              <div className="text-xs bci-muted">{g.cargo} • {g.email}</div>
                             </div>
+                            <div className="text-xs bci-muted">{g.telefono}</div>
+                          </div>
                         ))}
                       </div>
                     </div>
