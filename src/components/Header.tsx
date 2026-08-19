@@ -7,7 +7,7 @@ export default function Header({ onOpenSummary }: { onOpenSummary?: () => void }
       <div className="bci-topbar" />
       <div className="bci-header px-4 py-3">
         <div className="bci-logo">
-          <img src="/bci-logo.svg" alt="BCI logo" className="w-28 h-auto" />
+          <img src="/bci-logo.png" alt="BCI logo" className="w-28 h-auto" onError={(e)=>{ (e.target as HTMLImageElement).src = '/bci-logo.svg' }} />
           <div>
             <div className="bci-logo-text">eConfirming CRM</div>
             <div className="muted-sm">Panel de gestión • Banco BCI</div>
