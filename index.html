@@ -1,12 +1,23 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BCI · eConfirming — Prototipo</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>eConfirming CRM - Demo</title>
+		<style>
+		  /* Critical inline styles for fallback when compiled CSS is missing */
+		  :root{--bci-primary:#C8102E;--bci-bg:#f6f8f9;--bci-dark:#0f1724}
+		  html,body,#root{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bci-bg);color:var(--bci-dark)}
+		  .bci-header{display:flex;justify-content:space-between;align-items:center;padding:16px}
+		  .bci-card{background:#fff;border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06);}
+		  .kanban{display:flex;gap:20px;padding:16px;overflow:auto}
+		  .column{width:320px}
+		  .card{margin-bottom:12px}
+		</style>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+	</body>
 </html>
+
