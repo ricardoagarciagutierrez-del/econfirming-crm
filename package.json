@@ -1,28 +1,28 @@
 {
   "name": "econfirming-crm",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "apply:branding": "node ./scripts/apply-branding.js",
+    "setup:branding": "npm install --save-dev @storybook/react stylelint stylelint-config-standard prettier prettier-plugin-tailwindcss husky lint-staged"
   },
   "dependencies": {
-    "lucide-react": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.276.0"
   },
   "devDependencies": {
+    "vite": "^5.4.21",
+    "@vitejs/plugin-react": "^5.0.3",
+    "tailwindcss": "^4.2.0",
     "@tailwindcss/postcss": "^4.3.3",
-    "@tailwindcss/vite": "latest",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "autoprefixer": "latest",
-    "postcss": "latest",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.0.0",
-    "vite": "^5.0.0"
+    "autoprefixer": "^10.4.14",
+    "typescript": "^5.3.3",
+    "stylelint": "^15.0.0",
+    "prettier": "^2.8.8",
+    "@storybook/react": "^7.0.0"
   }
 }

@@ -1,0 +1,17 @@
+/* Auto-generated branding variables for BCI look */
+:root {
+  --bci-primary: #C8102E;
+  --bci-primary-600: #aa0f25;
+  --bci-primary-100: #fff5f6;
+  --bci-accent: #0b63b6;
+  --bci-dark: #0f1724;
+  --bci-muted: #6b7280;
+  --bci-surface: #ffffff;
+  --bci-radius: 12px;
+  --bci-shadow-sm: 0 6px 18px rgba(16,24,40,0.06);
+  --bci-shadow-md: 0 10px 30px rgba(16,24,40,0.08);
+}
+
+/* Minimal helpers */
+.bci-btn { background: var(--bci-primary); color: white; border-radius: 8px; }
+.bci-card { background: var(--bci-surface); border-radius: var(--bci-radius); box-shadow: var(--bci-shadow-sm); }
