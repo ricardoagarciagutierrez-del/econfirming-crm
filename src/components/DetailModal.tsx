@@ -217,9 +217,11 @@ export default function DetailModal({ convenio, onClose, onSave }: { convenio: C
                             <div>
                               <div className="font-medium">{g.nombre}</div>
                               <div className="text-xs text-slate-500">{g.cargo} • {g.email}</div>
+                            </div>
                             <div>
                               <button disabled={missing.length>0} className={`px-3 py-1 ${missing.length>0? 'bg-slate-200 text-slate-400':'bci-btn'}`} onClick={tryAdvance}>Avanzar a la siguiente etapa</button>
                             </div>
+                          </div>
                         ))}
                       </div>
                     </div>
